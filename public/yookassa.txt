@@ -1,0 +1,381 @@
+{
+  "type" : "notification",
+  "event" : "payment.succeeded",
+  "object" : {
+    "id" : "29e542e1-000f-5000-8000-1b1ad2c8676b",
+    "status" : "succeeded",
+    "amount" : {
+      "value" : "4400.00",
+      "currency" : "RUB"
+    },
+    "income_amount" : {
+      "value" : "4246.00",
+      "currency" : "RUB"
+    },
+    "description" : "Заказ №1",
+    "recipient" : {
+      "account_id" : "896085",
+      "gateway_id" : "1961069"
+    },
+    "payment_method" : {
+      "type" : "bank_card",
+      "id" : "29e542e1-000f-5000-8000-1b1ad2c8676b",
+      "saved" : false,
+      "title" : "Bank card *4444",
+      "card" : {
+        "first6" : "555555",
+        "last4" : "4444",
+        "expiry_year" : "2026",
+        "expiry_month" : "11",
+        "card_type" : "MasterCard",
+        "issuer_country" : "US"
+      }
+    },
+    "captured_at" : "2022-04-10T19:27:04.454Z",
+    "created_at" : "2022-04-10T19:25:21.712Z",
+    "test" : true,
+    "refunded_amount" : {
+      "value" : "0.00",
+      "currency" : "RUB"
+    },
+    "paid" : true,
+    "refundable" : true,
+    "metadata" : {
+      "order_id" : "96"
+    },
+    "authorization_details" : {
+      "rrn" : "749186958162708",
+      "auth_code" : "429938",
+      "three_d_secure" : {
+        "applied" : false
+      }
+    }
+  }
+}
+{
+  "type" : "notification",
+  "event" : "payment.succeeded",
+  "object" : {
+    "id" : "29e542e1-000f-5000-8000-1b1ad2c8676b",
+    "status" : "succeeded",
+    "amount" : {
+      "value" : "4400.00",
+      "currency" : "RUB"
+    },
+    "income_amount" : {
+      "value" : "4246.00",
+      "currency" : "RUB"
+    },
+    "description" : "Заказ №1",
+    "recipient" : {
+      "account_id" : "896085",
+      "gateway_id" : "1961069"
+    },
+    "payment_method" : {
+      "type" : "bank_card",
+      "id" : "29e542e1-000f-5000-8000-1b1ad2c8676b",
+      "saved" : false,
+      "title" : "Bank card *4444",
+      "card" : {
+        "first6" : "555555",
+        "last4" : "4444",
+        "expiry_year" : "2026",
+        "expiry_month" : "11",
+        "card_type" : "MasterCard",
+        "issuer_country" : "US"
+      }
+    },
+    "captured_at" : "2022-04-10T19:27:04.454Z",
+    "created_at" : "2022-04-10T19:25:21.712Z",
+    "test" : true,
+    "refunded_amount" : {
+      "value" : "0.00",
+      "currency" : "RUB"
+    },
+    "paid" : true,
+    "refundable" : true,
+    "metadata" : {
+      "order_id" : "96"
+    },
+    "authorization_details" : {
+      "rrn" : "749186958162708",
+      "auth_code" : "429938",
+      "three_d_secure" : {
+        "applied" : false
+      }
+    }
+  }
+}
+
+{
+  "type" : "notification",
+  "event" : "payment.succeeded",
+  "object" : {
+    "id" : "29e542e1-000f-5000-8000-1b1ad2c8676b",
+    "status" : "succeeded",
+    "amount" : {
+      "value" : "4400.00",
+      "currency" : "RUB"
+    },
+    "income_amount" : {
+      "value" : "4246.00",
+      "currency" : "RUB"
+    },
+    "description" : "Заказ №1",
+    "recipient" : {
+      "account_id" : "896085",
+      "gateway_id" : "1961069"
+    },
+    "payment_method" : {
+      "type" : "bank_card",
+      "id" : "29e542e1-000f-5000-8000-1b1ad2c8676b",
+      "saved" : false,
+      "title" : "Bank card *4444",
+      "card" : {
+        "first6" : "555555",
+        "last4" : "4444",
+        "expiry_year" : "2026",
+        "expiry_month" : "11",
+        "card_type" : "MasterCard",
+        "issuer_country" : "US"
+      }
+    },
+    "captured_at" : "2022-04-10T19:27:04.454Z",
+    "created_at" : "2022-04-10T19:25:21.712Z",
+    "test" : true,
+    "refunded_amount" : {
+      "value" : "0.00",
+      "currency" : "RUB"
+    },
+    "paid" : true,
+    "refundable" : true,
+    "metadata" : {
+      "order_id" : "96"
+    },
+    "authorization_details" : {
+      "rrn" : "749186958162708",
+      "auth_code" : "429938",
+      "three_d_secure" : {
+        "applied" : false
+      }
+    }
+  }
+}
+
+
+{
+  "type" : "notification",
+  "event" : "payment.succeeded",
+  "object" : {
+    "id" : "29e542e1-000f-5000-8000-1b1ad2c8676b",
+    "status" : "succeeded",
+    "amount" : {
+      "value" : "4400.00",
+      "currency" : "RUB"
+    },
+    "income_amount" : {
+      "value" : "4246.00",
+      "currency" : "RUB"
+    },
+    "description" : "Заказ №1",
+    "recipient" : {
+      "account_id" : "896085",
+      "gateway_id" : "1961069"
+    },
+    "payment_method" : {
+      "type" : "bank_card",
+      "id" : "29e542e1-000f-5000-8000-1b1ad2c8676b",
+      "saved" : false,
+      "title" : "Bank card *4444",
+      "card" : {
+        "first6" : "555555",
+        "last4" : "4444",
+        "expiry_year" : "2026",
+        "expiry_month" : "11",
+        "card_type" : "MasterCard",
+        "issuer_country" : "US"
+      }
+    },
+    "captured_at" : "2022-04-10T19:27:04.454Z",
+    "created_at" : "2022-04-10T19:25:21.712Z",
+    "test" : true,
+    "refunded_amount" : {
+      "value" : "0.00",
+      "currency" : "RUB"
+    },
+    "paid" : true,
+    "refundable" : true,
+    "metadata" : {
+      "order_id" : "96"
+    },
+    "authorization_details" : {
+      "rrn" : "749186958162708",
+      "auth_code" : "429938",
+      "three_d_secure" : {
+        "applied" : false
+      }
+    }
+  }
+}
+{
+  "type" : "notification",
+  "event" : "payment.succeeded",
+  "object" : {
+    "id" : "29e54222-000f-5000-8000-1195fa0cb479",
+    "status" : "succeeded",
+    "amount" : {
+      "value" : "4400.00",
+      "currency" : "RUB"
+    },
+    "income_amount" : {
+      "value" : "4246.00",
+      "currency" : "RUB"
+    },
+    "description" : "Заказ №1",
+    "recipient" : {
+      "account_id" : "896085",
+      "gateway_id" : "1961069"
+    },
+    "payment_method" : {
+      "type" : "bank_card",
+      "id" : "29e54222-000f-5000-8000-1195fa0cb479",
+      "saved" : false,
+      "title" : "Bank card *4444",
+      "card" : {
+        "first6" : "555555",
+        "last4" : "4444",
+        "expiry_year" : "2026",
+        "expiry_month" : "11",
+        "card_type" : "MasterCard",
+        "issuer_country" : "US"
+      }
+    },
+    "captured_at" : "2022-04-10T19:24:27.269Z",
+    "created_at" : "2022-04-10T19:22:10.640Z",
+    "test" : true,
+    "refunded_amount" : {
+      "value" : "0.00",
+      "currency" : "RUB"
+    },
+    "paid" : true,
+    "refundable" : true,
+    "metadata" : {
+      "order_id" : "96"
+    },
+    "authorization_details" : {
+      "rrn" : "671988200202148",
+      "auth_code" : "575619",
+      "three_d_secure" : {
+        "applied" : false
+      }
+    }
+  }
+}
+{
+  "type" : "notification",
+  "event" : "payment.succeeded",
+  "object" : {
+    "id" : "29e543f9-000f-5000-9000-169c3f5e87b9",
+    "status" : "succeeded",
+    "amount" : {
+      "value" : "800.00",
+      "currency" : "RUB"
+    },
+    "income_amount" : {
+      "value" : "772.00",
+      "currency" : "RUB"
+    },
+    "description" : "Заказ №1",
+    "recipient" : {
+      "account_id" : "896085",
+      "gateway_id" : "1961069"
+    },
+    "payment_method" : {
+      "type" : "bank_card",
+      "id" : "29e543f9-000f-5000-9000-169c3f5e87b9",
+      "saved" : false,
+      "title" : "Bank card *4444",
+      "card" : {
+        "first6" : "555555",
+        "last4" : "4444",
+        "expiry_year" : "2026",
+        "expiry_month" : "11",
+        "card_type" : "MasterCard",
+        "issuer_country" : "US"
+      }
+    },
+    "captured_at" : "2022-04-10T19:30:25.618Z",
+    "created_at" : "2022-04-10T19:30:01.047Z",
+    "test" : true,
+    "refunded_amount" : {
+      "value" : "0.00",
+      "currency" : "RUB"
+    },
+    "paid" : true,
+    "refundable" : true,
+    "metadata" : {
+      "order_id" : "98"
+    },
+    "authorization_details" : {
+      "rrn" : "327873318947330",
+      "auth_code" : "367824",
+      "three_d_secure" : {
+        "applied" : false
+      }
+    }
+  }
+}
+{
+  "type" : "notification",
+  "event" : "payment.succeeded",
+  "object" : {
+    "id" : "29e54435-000f-5000-8000-1c2827a22216",
+    "status" : "succeeded",
+    "amount" : {
+      "value" : "800.00",
+      "currency" : "RUB"
+    },
+    "income_amount" : {
+      "value" : "772.00",
+      "currency" : "RUB"
+    },
+    "description" : "Заказ №1",
+    "recipient" : {
+      "account_id" : "896085",
+      "gateway_id" : "1961069"
+    },
+    "payment_method" : {
+      "type" : "bank_card",
+      "id" : "29e54435-000f-5000-8000-1c2827a22216",
+      "saved" : false,
+      "title" : "Bank card *4444",
+      "card" : {
+        "first6" : "555555",
+        "last4" : "4444",
+        "expiry_year" : "2026",
+        "expiry_month" : "11",
+        "card_type" : "MasterCard",
+        "issuer_country" : "US"
+      }
+    },
+    "captured_at" : "2022-04-10T19:31:28.282Z",
+    "created_at" : "2022-04-10T19:31:01.500Z",
+    "test" : true,
+    "refunded_amount" : {
+      "value" : "0.00",
+      "currency" : "RUB"
+    },
+    "paid" : true,
+    "refundable" : true,
+    "metadata" : {
+      "order_id" : "99"
+    },
+    "authorization_details" : {
+      "rrn" : "416688436480774",
+      "auth_code" : "679537",
+      "three_d_secure" : {
+        "applied" : false
+      }
+    }
+  }
+}
