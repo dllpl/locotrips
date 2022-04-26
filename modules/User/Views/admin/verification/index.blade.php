@@ -30,11 +30,11 @@
                 </form>
             </div>
         </div>
-        <div class="text-right">
+        <div class="text-right mb-2">
             <div class="header-status-control">
-                <a href="{{ route('user.admin.verification.index') }}">{{__("All Verification")}}</a> -
-                <a href="{{ route('user.admin.verification.index',['status'=>'pending']) }}">{{__("Pending")}}</a> -
-                <a href="{{ route('user.admin.verification.index',['status'=>'approved'])  }}">{{__("Approved")}}</a>
+                <a class="btn btn-primary" href="{{ route('user.admin.verification.index') }}">Все статусы</a> -
+                <a class="btn btn-primary" href="{{ route('user.admin.verification.index',['status'=>'pending']) }}">Новые</a> -
+                <a class="btn btn-primary" href="{{ route('user.admin.verification.index',['status'=>'approved'])  }}">Одобренные</a>
             </div>
             <p><i>{{__('Found :total items',['total'=>$rows->total()])}}</i></p>
         </div>

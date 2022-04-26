@@ -51,6 +51,12 @@
             </div>
         </div>
         <div class="text-right">
+            <div class="header-status-control">
+                <a class="btn btn-primary" href="{{ route('space.admin.index') }}">Все статусы</a> -
+                <a class="btn btn-primary" href="{{ route('space.admin.index',['status'=>'approved']) }}">Опубликован</a> -
+                <a class="btn btn-primary" href="{{ route('space.admin.index',['status'=>'pending'])  }}">Проверка</a> -
+                <a class="btn btn-primary" href="{{ route('space.admin.index',['status'=>'draft'])  }}">Черновик</a>
+            </div>
             <p><i>{{__('Found :total items',['total'=>$rows->total()])}}</i></p>
         </div>
         <div class="panel">

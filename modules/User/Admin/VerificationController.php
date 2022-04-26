@@ -50,7 +50,7 @@ class VerificationController extends AdminController
                 $listUser->whereIn('verify_submit_status',['completed']);
                 break;
             default:
-                $listUser->whereIn('verify_submit_status',['new','partial','completed']);
+                $listUser->whereIn('verify_submit_status',['new','partial','completed','']);
         }
 
         $data = [

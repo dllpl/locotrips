@@ -74,6 +74,19 @@ class SpaceController extends AdminController
         } else {
             $query->where('create_user', Auth::id());
         }
+        switch ($request->input('status')){
+            case "pending":
+                $query->whereIn('status',['new','pending']);
+                break;
+            case "approved":
+                $query->whereIn('status',['publish']);
+                break;
+            case "draft":
+                $query->whereIn('status',['draft']);
+                break;
+            default:
+                $query->whereIn('status',['new','pending','publish','draft']);
+        }
         $data = [
             'rows'               => $query->with(['author'])->paginate(20),
             'space_manage_others' => $this->hasPermission('space_manage_others'),
