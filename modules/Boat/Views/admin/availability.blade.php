@@ -141,9 +141,17 @@
 				calendar.destroy();
             }
 			calendar = new FullCalendar.Calendar(calendarEl, {
-				plugins: [ 'dayGrid' ,'interaction'],
+				locale:'ru',
+locale:'ru',
+plugins: [ 'dayGrid' ,'interaction'],
 				header: {},
-				selectable: true,
+				selectable: true,locale:'ru',
+buttonText: {
+       today: "Сегодня",
+},locale:'ru',
+buttonText: {
+       today: "Сегодня",
+},
 				selectMirror: false,
 				allDay:false,
 				editable: false,
