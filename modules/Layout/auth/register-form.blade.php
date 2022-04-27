@@ -55,9 +55,9 @@
     @if(setting_item('facebook_enable') or setting_item('google_enable') or setting_item('twitter_enable'))
         <div class="advanced">
             <p class="text-center f14 c-grey">{{__("or continue with")}}</p>
-            <div class="row">
+            <div class="d-block">
                 @if(setting_item('facebook_enable'))
-                    <div class="col-xs-12 col-sm-4">
+                    <div>
                         <a href="{{url('/social-login/facebook')}}" class="btn btn_login_fb_link"
                            data-channel="facebook">
                             <i class="input-icon fa fa-facebook"></i>
@@ -66,7 +66,7 @@
                     </div>
                 @endif
                 @if(setting_item('google_enable'))
-                    <div class="col-xs-12 col-sm-4">
+                    <div>
                         <a href="{{url('social-login/google')}}" class="btn btn_login_gg_link" data-channel="google">
                             <i class="input-icon fa fa-google"></i>
                             {{__('Google')}}
@@ -74,7 +74,7 @@
                     </div>
                 @endif
                 @if(setting_item('twitter_enable'))
-                    <div class="col-xs-12 col-sm-4">
+                    <div>
                         <a href="{{url('social-login/twitter')}}" class="btn btn_login_tw_link" data-channel="twitter">
                             <i class="input-icon fa fa-twitter"></i>
                             {{__('Twitter')}}

@@ -343,7 +343,7 @@
                     font-size: 24px;
                 }
                 @media(max-width: 766px){
-                    font-size: 18px;
+                    font-size: 11px;
                 }
                 .btn-change-password{
                     font-size: 14px;
@@ -360,6 +360,11 @@
                         border-radius: 5px;
                     }
                     @media(max-width: 766px){
+                        font-size: 12px;
+                        top:-5px;
+                    }
+                    @media(max-width: 375px){
+                        font-size: 10px;
                         top:-5px;
                     }
                 }
@@ -895,7 +900,7 @@
                         @media (max-width: 1024px) {
                             margin-right: 10px;
                         }
-                        @media (max-width: 360px) {
+                        @media (max-width: 425px) {
                             width: 100%;
                         }
                         a {

@@ -7,10 +7,10 @@
     </h2>
     @include('admin.message')
     <div class="bravo-user-dashboard">
-        <div class="row dashboard-price-info row-eq-height">
+        <div class="row dashboard-price-info row-eq-height" style="background: white">
             @if(!empty($cards_report))
                 @foreach($cards_report as $item)
-                    <div class="col-lg-3 col-md-3">
+                    <div class="col col-lg-6 col-sm-6 col-xs-6 col-xl-6">
                         <div class="dashboard-item">
                             <div class="wrap-box">
                                 <div class="title">

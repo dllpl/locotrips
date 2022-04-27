@@ -14,7 +14,7 @@
   right: 0px;
   z-index: 1;
   padding: 7px 8px 3px;
-  color: #fff;
+  color: #1a2b47;
   border-top-right-radius: 5px;
   border-bottom-right-radius: 5px;
   display: none;
@@ -22,7 +22,6 @@
 }
 .bravo_wrap .bravo_user_profile .bravo-more-menu-user i {
   font-size: 24px;
-  margin-left:10px;
 }
 @media (max-width: 990px) {
   .bravo_wrap .bravo_user_profile .bravo-more-menu-user {
@@ -291,18 +290,15 @@
 }
 @media (max-width: 1024px) {
   .bravo_wrap .bravo_user_profile .user-form-settings {
-    padding: 0px 0;
+    padding: 15px 0;
   }
 }
 .bravo_wrap .bravo_user_profile .user-form-settings .breadcrumb-page-bar {
-
-  padding-top:10px;
-  padding-bottom:10px;
-  background: #1a2b48;
+  background: white;
   display: table;
   position: relative;
   width: 100%;
-  color: #fff;
+  color: #1a2b47;
   border: 1px solid #e8e8e8;
 }
 .bravo_wrap .bravo_user_profile .user-form-settings .breadcrumb-page-bar .page-breadcrumb {
@@ -316,7 +312,7 @@
   display: inline-block;
 }
 .bravo_wrap .bravo_user_profile .user-form-settings .breadcrumb-page-bar .page-breadcrumb > li a {
-  color: #fff;
+  color: #1a2b47;
 }
 .bravo_wrap .bravo_user_profile .user-form-settings .title-bar {
   display: block;
@@ -333,7 +329,7 @@
 }
 @media (max-width: 766px) {
   .bravo_wrap .bravo_user_profile .user-form-settings .title-bar {
-    font-size: 18px;
+    font-size: 11px;
   }
 }
 .bravo_wrap .bravo_user_profile .user-form-settings .title-bar .btn-change-password {
@@ -353,6 +349,13 @@
 }
 @media (max-width: 766px) {
   .bravo_wrap .bravo_user_profile .user-form-settings .title-bar .btn-change-password {
+    font-size: 12px;
+    top: -5px;
+  }
+}
+@media (max-width: 375px) {
+  .bravo_wrap .bravo_user_profile .user-form-settings .title-bar .btn-change-password {
+    font-size: 10px;
     top: -5px;
   }
 }
@@ -882,7 +885,7 @@
     margin-right: 10px;
   }
 }
-@media (max-width: 360px) {
+@media (max-width: 425px) {
   .bravo_wrap .bravo_user_profile .booking-history-manager .tabbable .ht-nav-tabs li {
     width: 100%;
   }
@@ -1257,7 +1260,6 @@
   transition: all 0.3s;
 }
 .bravo_wrap .bravo_user_profile .dungdt-upload-box {
-  max-width: 250px;
   /*margin: 0px auto;*/
   position: relative;
 }
