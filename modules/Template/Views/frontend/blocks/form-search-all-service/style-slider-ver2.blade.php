@@ -1,5 +1,5 @@
 
-<style type="text/css">
+<style>
     @media (max-width: 2000px){
 .videopc {
   width: 100%;
@@ -35,7 +35,7 @@
 <div class="effect">
     <div class="vidos">
         <video class="videopc" loop="loop" autoplay="" muted="">
-        <source src="https://locotrips.ru/uploads/templates/bg22.mp4" type="video/mp4" />
+        <source src="/uploads/templates/bg22.mp4" type="video/mp4" />
         </video>
     </div>
 </div>
