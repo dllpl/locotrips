@@ -300,6 +300,8 @@ class Booking extends BaseModel
         $res = [];
         $total_data = parent::selectRaw('sum(`total`) as total_price , sum( `total` - `total_before_fees` + `commission` - `vendor_service_fee_amount` ) AS total_earning ')->whereNotIn('status',static::$notAcceptedStatus)->first();
         $total_booking = parent::whereNotIn('status',static::$notAcceptedStatus)->count('id');
+        $count_users = DB::table('users')->count();
+        $count_vendors = User::role('vendor')->count();
         $total_service = 0;
         $services = get_bookable_services();
         if(!empty($services))
@@ -345,6 +347,27 @@ class Booking extends BaseModel
             'desc'   => __("Total bookable services"),
             'class'  => 'success',
             'icon'   => 'icon ion-ios-flash'
+        ];
+
+        $res[] = [
+
+            'size'   => 6,
+            'size_md'=>3,
+            'title'  => 'Пользователей',
+            'amount' => $count_users,
+            'desc'   => 'Всего зареганых пользователей',
+            'class'  => 'bg-warning',
+            'icon'   => 'icon ion-ios-people'
+        ];
+
+        $res[] = [
+            'size'   => 6,
+            'size_md'=>3,
+            'title'  => 'Вендоров',
+            'amount' => $count_vendors,
+            'desc'   => 'Всего со статусом Vendor',
+            'class'  => 'bg-success',
+            'icon'   => 'icon ion-ios-home'
         ];
         return $res;
     }
