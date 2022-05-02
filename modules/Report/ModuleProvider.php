@@ -3,6 +3,7 @@
 
 namespace Modules\Report;
 
+use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 use Modules\User\Models\Wallet\DepositPayment;
 
@@ -17,7 +18,7 @@ class ModuleProvider extends \Modules\ModuleServiceProvider
     {
         $count = 0;
         $pending_purchase = DepositPayment::countPending();
-        $contact_count = DB::table('bravo_contact')->count();
+        $contact_count = DB::table('bravo_contact')->whereDate('created_at', Carbon::today())->count();
 
         $count += $pending_purchase;
         return [
