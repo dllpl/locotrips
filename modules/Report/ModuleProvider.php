@@ -3,6 +3,7 @@
 
 namespace Modules\Report;
 
+use Illuminate\Support\Facades\DB;
 use Modules\User\Models\Wallet\DepositPayment;
 
 class ModuleProvider extends \Modules\ModuleServiceProvider
@@ -16,12 +17,14 @@ class ModuleProvider extends \Modules\ModuleServiceProvider
     {
         $count = 0;
         $pending_purchase = DepositPayment::countPending();
+        $contact_count = DB::table('bravo_contact')->count();
+
         $count += $pending_purchase;
         return [
             'report'=>[
                 "position"=>110,
                 'url'        => route('report.admin.booking'),
-                'title'      =>  __('Reports :count',['count'=>$count ? sprintf('<span class="badge badge-warning">%d</span>',$count) : '']),
+                'title'      =>  __('Reports :count',['count'=>$contact_count ? sprintf('<span class="badge badge-warning">%d</span>',$contact_count) : '']),
                 'icon'       => 'icon ion-ios-pie',
                 'permission' => 'report_view',
                 'children'   => [
@@ -45,7 +48,7 @@ class ModuleProvider extends \Modules\ModuleServiceProvider
                     ],
                     'contact'=>[
                         'url'        => route('contact.admin.index'),
-                        'title'      => __('Contact Submissions'),
+                        'title'      => __('Обратная связь :count', ['count'=>$contact_count ? sprintf('<span class="badge badge-warning">%d</span>',$contact_count) : '']),
                         'icon'       => 'icon ion ion-md-mail',
                         'permission' => 'contact_manage',
                     ],
