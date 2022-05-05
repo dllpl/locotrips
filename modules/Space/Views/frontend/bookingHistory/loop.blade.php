@@ -5,6 +5,7 @@
         @endif
         <small>{{$booking->object_model}}</small>
     </td>
+    <td class="a-hidden">{{date('d.m.y', strtotime($booking->start_date))}}</td>
     <td>
         @if($service = $booking->service)
             @php
@@ -17,11 +18,12 @@
             {{__("[Deleted]")}}
         @endif
     </td>
+    <td class="a-hidden">{{$booking->phone}}<p>{{$booking->address}}</p></td>
     <td class="a-hidden">{{display_date($booking->created_at)}}</td>
     <td class="a-hidden">
-        {{__("Start date")}} : {{display_date($booking->start_date)}} <br>
-        {{__("End date")}} : {{display_date($booking->end_date)}} <br>
-        {{__("Duration")}} :
+        {{__("Start date")}}: {{display_date($booking->start_date)}} <br>
+        {{__("End date")}}: {{display_date($booking->end_date)}} <br>
+        {{__("Duration")}}:
         @if($booking->getMeta("booking_type") == "by_day")
             @if($booking->duration_days <= 1)
                 {{__(':count day',['count'=>$booking->duration_days])}}
