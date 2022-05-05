@@ -121,10 +121,12 @@
                 </div>
             </div>
         @endif
-        <div class="form-group">
-            <label class="control-label">Время въезда/выезда</label>
-            <div class="d-flex">
+        <label class="control-label">Время въезда/выезда</label>
+        <div class="row">
+            <div class="col-lg-6">
                 <input type="text" placeholder="Время для заселения" value="{{$row->check_in}}" name="check_in" class="form-control">
+            </div>
+            <div class="col-lg-6">
                 <input type="text" placeholder="Время для выезда" value="{{$row->check_out}}" name="check_out" class="form-control">
             </div>
         </div>
