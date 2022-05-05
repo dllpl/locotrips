@@ -185,7 +185,8 @@ class ManageSpaceController extends FrontendController
             'enable_service_fee',
             'service_fee',
             'surrounding',
-
+            'check_in',
+            'check_out',
         ];
         if($this->hasPermission('space_manage_others')){
             $dataKeys[] = 'create_user';

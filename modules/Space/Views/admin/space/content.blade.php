@@ -11,6 +11,13 @@
                 <textarea name="content" class="d-none has-ckeditor" cols="30" rows="10">{{$translation->content}}</textarea>
             </div>
         </div>
+        <div class="form-group">
+            <label class="control-label">Время въезда и выезда</label>
+            <div class="d-flex">
+                <input type="text" placeholder="въезд" value="{{$row->check_in}}" name="check_in" class="form-control">
+                <input type="text" placeholder="выезд" value="{{$row->check_out}}" name="check_out" class="form-control">
+            </div>
+        </div>
         @if(is_default_lang())
             <div class="form-group">
                 <label class="control-label">{{__("Youtube Video")}}</label>

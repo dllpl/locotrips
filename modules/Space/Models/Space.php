@@ -40,7 +40,9 @@ class Space extends Bookable
         'title',
         'content',
         'status',
-        'faqs'
+        'faqs',
+        'check_in',
+        'check_out'
     ];
     protected $slugField     = 'slug';
     protected $slugFromField = 'title';
