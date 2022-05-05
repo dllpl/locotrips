@@ -11,13 +11,6 @@
                 <textarea name="content" class="d-none has-ckeditor" cols="30" rows="10">{{$translation->content}}</textarea>
             </div>
         </div>
-        <div class="form-group">
-            <label class="control-label">Время въезда/выезда</label>
-            <div class="d-flex">
-                <input type="text" placeholder="Время для заселения" value="{{$row->check_in}}" name="check_in" class="form-control">
-                <input type="text" placeholder="Время для выезда" value="{{$row->check_out}}" name="check_out" class="form-control">
-            </div>
-        </div>
         @if(is_default_lang())
             <div class="form-group">
                 <label class="control-label">{{__("Youtube Video")}}</label>
@@ -90,7 +83,7 @@
 <div class="panel">
     <div class="panel-title"><strong>{{__("Extra Info")}}</strong></div>
     <div class="panel-body">
-        <div class="row">
+            <div class="row">
             <div class="col-md-4">
                 <div class="form-group">
                     <label>{{__("No. Bed")}}</label>
@@ -128,6 +121,13 @@
                 </div>
             </div>
         @endif
+        <div class="form-group">
+            <label class="control-label">Время въезда/выезда</label>
+            <div class="d-flex">
+                <input type="text" placeholder="Время для заселения" value="{{$row->check_in}}" name="check_in" class="form-control">
+                <input type="text" placeholder="Время для выезда" value="{{$row->check_out}}" name="check_out" class="form-control">
+            </div>
+        </div>
     </div>
 </div>
 @endif
