@@ -29,7 +29,7 @@
                             <thead>
                             <tr>
                                 <th width="2%">{{__("Type")}}</th>
-                                <th>Дата</th>
+{{--                                <th>Дата</th>--}}
                                 <th>{{__("Title")}}</th>
                                 <th>Телефон и адрес</th>
                                 <th class="a-hidden">{{__("Order Date")}}</th>

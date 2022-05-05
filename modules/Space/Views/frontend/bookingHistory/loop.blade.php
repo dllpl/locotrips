@@ -5,7 +5,7 @@
         @endif
         <small>{{$booking->object_model}}</small>
     </td>
-    <td class="a-hidden">{{date('d.m.y', strtotime($booking->start_date))}}</td>
+{{--    <td class="a-hidden">{{date('d.m.y', strtotime($booking->start_date))}}</td>--}}
     <td>
         @if($service = $booking->service)
             @php
