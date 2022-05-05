@@ -112,7 +112,7 @@
                         </a>
                     </li>
                     <li>
-                        
+
                         <a class="twitter" href="whatsapp://send?text={{$row->getDetailUrl()}}&amp;title={{$translation->title}}" data-action="share/whatsapp/share" target="_blank" rel="noopener" original-title="WhatsApp">
                             <i class="fa fa-whatsapp fa-lg"></i>
                         </a>
@@ -130,6 +130,15 @@
         <h3>{{__("Description")}}</h3>
         <div class="description">
             <?php echo $translation->content ?>
+        </div>
+    </div>
+@endif
+@if($row->check_in AND $row->check_out)
+    <div class="g-overview">
+        <h3>Правила</h3>
+        <div class="description">
+            <div>Въезд в {{$row->check_in}}</div>
+            <div>Выезд в {{$row->check_out}}</div>
         </div>
     </div>
 @endif

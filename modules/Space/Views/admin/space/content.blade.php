@@ -12,10 +12,10 @@
             </div>
         </div>
         <div class="form-group">
-            <label class="control-label">Время въезда и выезда</label>
+            <label class="control-label">Время въезда/выезда</label>
             <div class="d-flex">
-                <input type="text" placeholder="въезд" value="{{$row->check_in}}" name="check_in" class="form-control">
-                <input type="text" placeholder="выезд" value="{{$row->check_out}}" name="check_out" class="form-control">
+                <input type="text" placeholder="Время для заселения" value="{{$row->check_in}}" name="check_in" class="form-control">
+                <input type="text" placeholder="Время для выезда" value="{{$row->check_out}}" name="check_out" class="form-control">
             </div>
         </div>
         @if(is_default_lang())
