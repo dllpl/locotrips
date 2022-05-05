@@ -124,12 +124,24 @@
         <label class="control-label">Время въезда/выезда</label>
         <div class="row">
             <div class="col-lg-6">
-                <input type="text" placeholder="Время для заселения" value="{{$row->check_in}}" name="check_in" class="form-control">
+                <input type="text" placeholder="Время для заселения" value="{{$row->check_in}}" name="check_in" class="form-control" id="check_in">
             </div>
             <div class="col-lg-6">
-                <input type="text" placeholder="Время для выезда" value="{{$row->check_out}}" name="check_out" class="form-control">
+                <input type="text" placeholder="Время для выезда" value="{{$row->check_out}}" name="check_out" class="form-control" id="check_out">
             </div>
         </div>
     </div>
 </div>
+<script src="https://unpkg.com/imask"></script>
+<script>
+    var element1 = document.getElementById('check_in');
+    var element2 = document.getElementById('check_out');
+    var maskOptions = {
+        min: '0',
+        maks: '23',
+        mask: '00:00'
+    };
+    var mask = IMask(element1, maskOptions);
+    var mask2 = IMask(element2, maskOptions);
+</script>
 @endif
