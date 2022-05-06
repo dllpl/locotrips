@@ -28,15 +28,12 @@
                         <table class="table table-bordered table-striped table-booking-history">
                             <thead>
                             <tr>
-                                <th width="2%">{{__("Type")}}</th>
-{{--                                <th>Дата</th>--}}
+{{--                                <th width="2%">{{__("Type")}}</th>--}}
                                 <th>{{__("Title")}}</th>
                                 <th>Телефон и адрес</th>
                                 <th class="a-hidden">{{__("Order Date")}}</th>
                                 <th class="a-hidden">{{__("Execution Time")}}</th>
-                                <th>{{__("Total")}}</th>
-                                <th>{{__("Paid")}}</th>
-                                <th>{{__("Remain")}}</th>
+                                <th>Платежная информация</th>
                                 <th class="a-hidden">{{__("Status")}}</th>
                                 <th>{{__("Action")}}</th>
                             </tr>

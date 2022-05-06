@@ -1,16 +1,16 @@
 <tr>
-    <td class="booking-history-type">
-        @if($service = $booking->service)
-            <i class="{{$service->getServiceIconFeatured()}}"></i>
-        @endif
-        <small>{{$booking->object_model}}</small>
-    </td>
-{{--    <td class="a-hidden">{{date('d.m.y', strtotime($booking->start_date))}}</td>--}}
+{{--    <td class="booking-history-type">--}}
+{{--        @if($service = $booking->service)--}}
+{{--            <i class="{{$service->getServiceIconFeatured()}}"></i>--}}
+{{--        @endif--}}
+{{--        <small>{{$booking->object_model}}</small>--}}
+{{--    </td>--}}
     <td>
         @if($service = $booking->service)
             @php
                 $translation = $service->translateOrOrigin(app()->getLocale());
             @endphp
+            <p>{{date('d.m.y', strtotime($booking->start_date))}}</p>
             <a target="_blank" href="{{$service->getDetailUrl()}}">
                 {!! clean($translation->title) !!}
             </a>
@@ -39,9 +39,11 @@
             @endif
         @endif
     </td>
-    <td>{{format_money($booking->total)}}</td>
-    <td>{{format_money($booking->paid)}}</td>
-    <td>{{format_money($booking->total - $booking->paid)}}</td>
+    <td class="a-hidden">
+        Итого: {{format_money($booking->total)}} <br>
+        Оплачено: {{format_money($booking->paid)}} <br>
+        К оплате на месте: {{format_money($booking->total - $booking->paid)}} <br>
+    </td>
     <td class="{{$booking->status}} a-hidden">{{$booking->statusName}}</td>
     <td width="2%">
         @if($service = $booking->service)
