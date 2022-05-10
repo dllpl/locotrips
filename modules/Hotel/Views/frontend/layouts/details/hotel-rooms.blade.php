@@ -79,9 +79,24 @@
                     <div class="room-item" v-for="room in rooms">
                         <div class="row">
                             <div class="col-xs-12 col-md-3">
-                                <div class="image" @click="showGallery($event,room.id,room.gallery)">
-                                    <img :src="room.image" alt="">
-                                    <div class="count-gallery" v-if="typeof room.gallery !='undefined' && room.gallery && room.gallery.length > 1">
+                                <div class="image" @click="showGallery($event,room.id,room.gallery)" style="height: 100%;
+    position: relative;">
+                                    <img :src="room.image" alt="" class="cover-img" style="width: 100%;
+    height: 100%;
+    object-fit: cover;">
+                                    <div class="count-gallery" v-if="typeof room.gallery !='undefined' && room.gallery && room.gallery.length > 1" style="
+                                           transition: 0.2s;
+                                           position: absolute;
+                                           bottom: 0;
+                                           right: 0;
+                                           color: #fff;
+                                           padding: 5px 7px;
+                                           font-size: 13px;
+                                           line-height: 1em;
+                                           opacity: 1;
+                                           -ms-filter: none;
+                                           filter: none;
+                                           background: rgba(0, 0, 0, 0.5);">
                                         <i class="fa fa-picture-o"></i>
                                         @{{room.gallery.length}}
                                     </div>
@@ -117,7 +132,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-xs-12 col-md-6">
+                            <div class="col-xs-12 col-md-4">
                                 <div class="hotel-info">
                                     <h3 class="room-name" @click="showGallery($event,room.id,room.gallery)">@{{room.title}}</h3>
                                     <ul class="room-meta">
@@ -146,13 +161,23 @@
                                             </div>
                                         </li>
                                     </ul>
-                                    <div class="room-attribute-item" v-if="room.term_features">
-                                        <ul>
-                                            <li v-for="term_child in room.term_features">
-                                                <i class="input-icon field-icon" v-bind:class="term_child.icon" data-toggle="tooltip" data-placement="top" :title="term_child.title"></i>
-                                            </li>
-                                        </ul>
-                                    </div>
+{{--                                    <div class="room-attribute-item" v-if="room.term_features">--}}
+{{--                                        <ul>--}}
+{{--                                            <li v-for="term_child in room.term_features">--}}
+{{--                                                <i class="input-icon field-icon" v-bind:class="term_child.icon" data-toggle="tooltip" data-placement="top" :title="term_child.title"></i>--}}
+{{--                                            </li>--}}
+{{--                                        </ul>--}}
+{{--                                    </div>--}}
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-md-5">
+                                <div class="room-attribute-item" v-if="room.term_features">
+                                    <ul>
+                                        <li v-for="term_child in room.term_features" class="d-flex p-1 align-items-center">
+                                            <i class="input-icon field-icon" v-bind:class="term_child.icon" data-toggle="tooltip" data-placement="top" :title="term_child.title"></i>
+                                            <small style="margin-left: 5px">@{{term_child.title}}</small>
+                                        </li>
+                                    </ul>
                                 </div>
                             </div>
                             <div class="col-md-3" v-if="room.number">
@@ -255,4 +280,31 @@
         </div>
     </div>
 </div>
+{{--<style>--}}
+{{--    @media (min-width: 768px) {--}}
+{{--        .image {--}}
+{{--            height: 100%;--}}
+{{--            position: relative;--}}
+{{--        }--}}
+{{--        .cover-img {--}}
+{{--            width: 100%;--}}
+{{--            height: 100%;--}}
+{{--            object-fit: cover;--}}
+{{--        }--}}
+{{--        .count-gallery {--}}
+{{--            transition: 0.2s;--}}
+{{--            position: absolute;--}}
+{{--            bottom: 0;--}}
+{{--            right: 0;--}}
+{{--            color: #fff;--}}
+{{--            padding: 5px 7px;--}}
+{{--            font-size: 13px;--}}
+{{--            line-height: 1em;--}}
+{{--            opacity: 1;--}}
+{{--            -ms-filter: none;--}}
+{{--            filter: none;--}}
+{{--            background: rgba(0, 0, 0, 0.5);--}}
+{{--        }--}}
+{{--    }--}}
+{{--</style>--}}
 @include("Booking::frontend.global.enquiry-form",['service_type'=>'hotel'])
