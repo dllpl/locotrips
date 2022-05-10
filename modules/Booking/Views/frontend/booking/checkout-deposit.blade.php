@@ -1,6 +1,6 @@
 @if(floatval($booking->deposit))
     <hr>
-    <div class="form-section">
+    <div class="form-section" style="display:none;">
         <h4 class="form-section-title">{{__("How do you want to pay?")}}</h4>
         <div class="deposit_types gateways-table accordion ">
             <div class="card">
