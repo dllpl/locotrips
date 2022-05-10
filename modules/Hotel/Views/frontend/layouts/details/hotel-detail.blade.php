@@ -37,7 +37,7 @@
 </div>
 @if($row->getGallery())
     <div class="g-gallery">
-        <div class="fotorama" data-width="100%" data-thumbwidth="135" data-thumbheight="135" data-thumbmargin="15" data-nav="thumbs" data-allowfullscreen="true">
+        <div class="fotorama" data-width="100%" data-thumbwidth="135" data-ratio="16/9" data-thumbheight="135" data-thumbmargin="15" data-nav="thumbs" data-allowfullscreen="true">
             @foreach($row->getGallery() as $key=>$item)
                 <a href="{{$item['large']}}" data-thumb="{{$item['thumb']}}" data-alt="{{ __("Gallery") }}"></a>
             @endforeach
@@ -54,7 +54,7 @@
                         </a>
                     </li>
                     <li>
-                        
+
                         <a class="twitter" href="whatsapp://send?text={{$row->getDetailUrl()}}&amp;title={{$translation->title}}" data-action="share/whatsapp/share" target="_blank" rel="noopener" original-title="WhatsApp">
                             <i class="fa fa-whatsapp fa-lg"></i>
                         </a>
