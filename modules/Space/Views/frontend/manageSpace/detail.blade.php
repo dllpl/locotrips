@@ -13,6 +13,7 @@
     <div class="lang-content-box">
         <form action="{{route('space.vendor.store',['id'=>($row->id) ? $row->id : '-1','lang'=>request()->query('lang')])}}" method="post">
             @csrf
+            <input type="text" class="d-none" value="{{$row->id}}" id="space_id">
             <div class="form-add-service">
                 <div class="nav nav-tabs nav-fill" id="nav-tab" role="tablist">
                     <a data-toggle="tab" href="#nav-tour-content" aria-selected="true" class="active">{{__("1. Content")}}</a>
@@ -122,5 +123,39 @@
                 }
             });
         })
+    </script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js" integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU=" crossorigin="anonymous"></script>
+    <script>
+        $('.attach-demo').sortable({
+            items: '.image-item',
+            opacity: 0.7,
+            axis: 'x',
+            update: function() {
+                var arr = [];
+                $('.image-item a').each(function (i, e) {
+                    arr.push($(e).attr('data-id'))
+                });
+                $('#gallery_input').val(arr)
+
+                // let space_id = $('#space_id').val()
+                // let data = new FormData();
+                // data.append('space_id',space_id)
+                // data.append('images', arr)
+                //
+                // $.ajax({
+                //     type: "POST",
+                //     url: "/user/space/sortPhoto/",
+                //     data: data,
+                //     processData: false,
+                //     contentType: false,
+                //     dataType: "json",
+                //     success: function () {
+                //         $('#sort_save').removeAttr('disabled')
+                //     }
+                // });
+            }
+
+        });
+
     </script>
 @endsection
