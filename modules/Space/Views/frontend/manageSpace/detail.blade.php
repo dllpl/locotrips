@@ -129,7 +129,9 @@
         $('.attach-demo').sortable({
             items: '.image-item',
             opacity: 0.7,
-            axis: 'x',
+            containment: 'parent',
+            revert: true,
+            tolerance: 'pointer',
             update: function() {
                 var arr = [];
                 $('.image-item a').each(function (i, e) {
