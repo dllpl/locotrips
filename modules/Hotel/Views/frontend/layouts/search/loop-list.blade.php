@@ -8,6 +8,16 @@
         </div>
     @endif
     <div class="thumb-image">
+        <div style="position: absolute;
+            z-index: 0;
+            left: -10px;
+            top: -10px;
+            right: -10px;
+            bottom: -10px;
+            filter: blur(5px);
+            background: url({{$row->image_url}}) no-repeat center;
+            background-size: cover;">
+        </div>
         <a @if(!empty($blank)) target="_blank" @endif href="{{$row->getDetailUrl()}}">
             @if($row->image_url)
                 @if(!empty($disable_lazyload))
