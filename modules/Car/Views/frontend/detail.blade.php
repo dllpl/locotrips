@@ -3,6 +3,8 @@
     <link href="{{ asset('dist/frontend/module/car/css/car.css?_ver='.config('app.asset_version')) }}" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="{{ asset("libs/ion_rangeslider/css/ion.rangeSlider.min.css") }}"/>
     <link rel="stylesheet" type="text/css" href="{{ asset("libs/fotorama/fotorama.css") }}"/>
+    <script src="https://api-maps.yandex.ru/2.1/?apikey=80e45720-3274-4260-befa-7ea70d8416b4&lang=ru_RU" type="text/javascript">
+    </script>
 @endsection
 @section('content')
     <div class="bravo_detail_car">
@@ -32,30 +34,62 @@
 @endsection
 
 @section('footer')
-    {!! App\Helpers\MapEngine::scripts() !!}
-    <script>
-        jQuery(function ($) {
-            @if($row->map_lat && $row->map_lng)
-            new BravoMapEngine('map_content', {
-                disableScripts: true,
-                fitBounds: true,
-                center: [{{$row->map_lat}}, {{$row->map_lng}}],
-                zoom:{{$row->map_zoom ?? "8"}},
-                ready: function (engineMap) {
-                    engineMap.addMarker([{{$row->map_lat}}, {{$row->map_lng}}], {
-                        icon_options: {
-                            iconUrl:"{{get_file_url(setting_item("car_icon_marker_map"),'full') ?? url('images/icons/png/pin.png') }}"
-                        }
-                    });
-                }
-            });
-            @endif
-        })
+{{-- {!! App\Helpers\MapEngine::scripts() !!}--}}
+{{--            <script>--}}
+{{--                jQuery(function ($) {--}}
+{{--@if($row->map_lat && $row->map_lng)--}}
+{{--        new BravoMapEngine('map_content', {--}}
+{{--            disableScripts: true,--}}
+{{--            fitBounds: true,--}}
+{{--            center: [{{$row->map_lat}}, {{$row->map_lng}}],--}}
+{{--                zoom:{{$row->map_zoom ?? "8"}},--}}
+{{--                ready: function (engineMap) {--}}
+{{--                    engineMap.addMarker([{{$row->map_lat}}, {{$row->map_lng}}], {--}}
+{{--                        icon_options: {--}}
+{{--                            iconUrl:"{{get_file_url(setting_item("car_icon_marker_map"),'full') ?? url('images/icons/png/pin.png') }}"--}}
+{{--                        }--}}
+{{--                    });--}}
+{{--                }--}}
+{{--            });--}}
+{{--            @endif--}}
+{{--            })--}}
+{{--        </script> --}}
+
+    <script type="text/javascript">
+        ymaps.ready(function () {
+            var myMap = new ymaps.Map('map_content', {
+                    center: [{{$row->map_lat}}, {{$row->map_lng}}],
+                    zoom: 13
+                }, {
+                    searchControlProvider: 'yandex#search'
+                }),
+
+                // Создаём макет содержимого.
+                MyIconContentLayout = ymaps.templateLayoutFactory.createClass(
+                    '<div style="color: #FFFFFF; font-weight: bold;">$[properties.iconContent]</div>'
+                ),
+
+                myPlacemark = new ymaps.Placemark(myMap.getCenter(), {
+                    hintContent: '{!! clean($translation->title) !!}',
+                    balloonContent: '{!! clean($translation->title) !!} по адресу {{$translation->address}}'
+                }, {
+                    iconLayout: 'default#image',
+                    iconImageHref: 'https://locotrips.ru/images/icons/png/pin.png',
+                    iconImageSize: [26, 42],
+                    // Смещение левого верхнего угла иконки относительно
+                    // её "ножки" (точки привязки).
+                    iconImageOffset: [-17, -50]
+                });
+
+            myMap.geoObjects
+                .add(myPlacemark);
+        });
     </script>
+
     <script>
         var bravo_booking_data = {!! json_encode($booking_data) !!}
-        var bravo_booking_i18n = {
-			no_date_select:'{{__('Please select Start and End date')}}',
+            var bravo_booking_i18n = {
+            no_date_select:'{{__('Please select Start and End date')}}',
             no_guest_select:'{{__('Please select at least one number')}}',
             load_dates_url:'{{route('car.vendor.availability.loadDates')}}',
             name_required:'{{ __("Name is Required") }}',
