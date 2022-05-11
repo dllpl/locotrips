@@ -283,7 +283,37 @@ buttonText: {
             created:function () {
                 var me = this;
                 this.$nextTick(function () {
-                    $('.has-daterangepicker').daterangepicker({ "locale": {"format": bookingCore.date_format}})
+                    $('.has-daterangepicker').daterangepicker({ "locale": {
+                            "format": bookingCore.date_format,
+                            "separator": " - ",
+                            "applyLabel": "Сохранить",
+                            "cancelLabel": "Назад",
+                            "daysOfWeek": [
+                                "Вс",
+                                "Пн",
+                                "Вт",
+                                "Ср",
+                                "Чт",
+                                "Пт",
+                                "Сб"
+                            ],
+                            "monthNames": [
+                                "Январь",
+                                "Февраль",
+                                "Март",
+                                "Апрель",
+                                "Май",
+                                "Июнь",
+                                "Июль",
+                                "Август",
+                                "Сентябрь",
+                                "Октябрь",
+                                "Ноябрь",
+                                "Декабрь"
+                            ],
+                            "firstDay": 1
+                        }
+                    })
                      .on('apply.daterangepicker',function (e,picker) {
                          console.log(picker);
                          me.form.start_date = picker.startDate.format('YYYY-MM-DD');
