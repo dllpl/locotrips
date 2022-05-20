@@ -55,9 +55,9 @@
     position: fixed;
     top: 0;
     left: 0;
-    width: 250px;
+    width: 295px;
     z-index: 99;
-    max-width: 250px;
+    max-width: 295px;
     transform: translate(-100%, 0);
     transition: all 0.3s;
     height: 100%;

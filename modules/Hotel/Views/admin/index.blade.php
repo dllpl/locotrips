@@ -50,7 +50,7 @@
                 </form>
             </div>
         </div>
-        <div class="text-right">
+        <div class="text-right mb-4">
             <div class="header-status-control">
                 <a class="btn btn-primary" href="{{ route('hotel.admin.index') }}">Все статусы</a> -
                 <a class="btn btn-primary" href="{{ route('hotel.admin.index',['status'=>'approved']) }}">Опубликован</a> -

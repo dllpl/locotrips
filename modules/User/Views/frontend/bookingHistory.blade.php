@@ -10,17 +10,28 @@
     <div class="booking-history-manager">
         <div class="tabbable">
             <ul class="nav nav-tabs ht-nav-tabs">
-                <?php $status_type = Request::query('status'); ?>
-                <li class="@if(empty($status_type)) active @endif">
-                    <a href="{{route("user.booking_history")}}">{{__("All Booking")}}</a>
-                </li>
-                @if(!empty($statues))
-                    @foreach($statues as $status)
-                        <li class="@if(!empty($status_type) && $status_type == $status) active @endif">
-                            <a href="{{route("user.booking_history",['status'=>$status])}}">{{booking_status_to_text($status)}}</a>
-                        </li>
-                    @endforeach
-                @endif
+                <div class="dropdown">
+                    <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        @if ($status_type = Request::query('status') == '')
+                            Фильтр: <?php echo 'Все бронирования'?>
+                        @else
+                            Фильтр: <?php echo booking_status_to_text($status_type = Request::query('status')); ?>
+                        @endif
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <?php $status_type = Request::query('status'); ?>
+                    <li class="@if(empty($status_type)) active @endif">
+                        <a href="{{route("user.booking_history")}}">{{__("All Booking")}}</a>
+                    </li>
+                    @if(!empty($statues))
+                        @foreach($statues as $status)
+                            <li class="@if(!empty($status_type) && $status_type == $status) active @endif">
+                                <a href="{{route("user.booking_history",['status'=>$status])}}">{{booking_status_to_text($status)}}</a>
+                            </li>
+                        @endforeach
+                    @endif
+                    </div>
+                </div>
             </ul>
             @if(!empty($bookings) and $bookings->total() > 0)
                 <div class="tab-content">
