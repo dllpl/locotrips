@@ -25,7 +25,7 @@
                 </div>
             </div>
             <div class="form-group">
-                <label class="control-label">{{__("Gallery")}}</label>
+                <label class="control-label">{{__("Gallery")}}</label><br>
                 <small>Вы можете изменить порядок вывода изображений с помощью drag-and-drop</small>
                 {!! \Modules\Media\Helpers\FileHelper::fieldGalleryUpload('gallery',$row->gallery) !!}
             </div>

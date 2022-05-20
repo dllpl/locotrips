@@ -362,6 +362,8 @@
 .bravo_wrap .bravo_user_profile .user-form-settings .title-bar .title-action {
   float: right;
 }
+
+
 .bravo_wrap .bravo_user_profile .user-form-settings .title-bar .title-action .btn {
   font-size: 14px;
   padding: 5px 12px;
@@ -378,7 +380,9 @@
 }
 @media (max-width: 766px) {
   .bravo_wrap .bravo_user_profile .user-form-settings .title-bar .title-action .btn {
+      margin: 3px auto;
     top: -5px;
+    width: 100%;
   }
 }
 .bravo_wrap .bravo_user_profile .user-form-settings .form-title {
@@ -390,6 +394,13 @@
     font-size: 16px;
   }
 }
+
+@media (max-width: 462px) {
+    .bravo_wrap .bravo_user_profile .user-form-settings .title-bar .title-action{
+        margin-top: 15px;
+    }
+}
+
 .bravo_wrap .bravo_user_profile .user-form-settings .alert ul {
   margin-left: 20px;
 }
@@ -432,6 +443,25 @@
 .bravo_wrap .bravo_user_profile .user-form-settings .language-navigation {
   margin-bottom: 20px;
 }
+
+@media (max-width: 768px) {
+    .bravo_wrap .bravo_user_profile .user-form-settings .language-navigation {
+        margin-top: 20px;
+    }
+}
+
+@media (max-width: 462px) {
+    .bravo_wrap .bravo_user_profile .user-form-settings .language-navigation {
+        margin-top: 30px;
+    }
+}
+
+@media (max-width: 375px) {
+    .bravo_wrap .bravo_user_profile .user-form-settings .language-navigation {
+        margin-top: 43px;
+    }
+}
+
 .bravo_wrap .bravo_user_profile .user-form-settings .language-navigation ul {
   border: none;
 }
@@ -504,6 +534,9 @@
   position: relative;
 }
 @media (max-width: 766px) {
+    .bravo_wrap .bravo_user_profile .form-add-service .nav-tabs {
+        margin-top: 40px;
+    }
   .bravo_wrap .bravo_user_profile .form-add-service .nav-tabs a {
     border-bottom: solid 1px transparent;
     width: 100%;

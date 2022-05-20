@@ -11,14 +11,14 @@
     </h2>
     <div class="language-navigation">
         <div class="panel-body">
-            <div class="filter-div d-flex justify-content-between ">
+            <div class="filter-div d-flex justify-content-between">
                 <div class="col-left">
                     <form method="get" action="" class="filter-form filter-form-left d-flex flex-column flex-sm-row" role="search">
                         <input type="text" name="s" value="{{ Request()->s }}" placeholder="{{__('Search by name')}}" class="form-control">&nbsp;&nbsp;
                         <button class="btn-info btn btn-icon btn_search btn-sm" type="submit">{{__('Search')}}</button>
                     </form>
                 </div>
-                <div class="col-right">
+                <div class="col-right ml-1">
                     @if($rows->total() > 0)
                         <span class="count-string">{{ __("Showing :from - :to of :total rooms",["from"=>$rows->firstItem(),"to"=>$rows->lastItem(),"total"=>$rows->total()]) }}</span>
                     @endif
