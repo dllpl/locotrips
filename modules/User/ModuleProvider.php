@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\MessageBag;
 use Laravel\Fortify\Fortify;
 use Laravel\Fortify\Http\Requests\LoginRequest;
+use Modules\Booking\Models\Enquiry;
 use Modules\ModuleServiceProvider;
 use Modules\Vendor\Models\VendorRequest;
 
@@ -88,6 +89,8 @@ class ModuleProvider extends ModuleServiceProvider
         $res = [];
         $user = Auth::user();
 
+        $count_enquiry = Enquiry::where('vendor_id', $user->id)->where('status','pending')->count();
+
         $is_wallet_module_disable = setting_item('wallet_module_disable');
         if(empty($is_wallet_module_disable))
         {
@@ -114,7 +117,7 @@ class ModuleProvider extends ModuleServiceProvider
             'position'   => 37,
             'icon'       => 'icofont-ebook',
             'url'        => route('vendor.enquiry_report'),
-            'title'      => __("Enquiry Report"),
+            'title'      => __("Запросы от гостей :count",['count'=>$count_enquiry ? sprintf('<span class="badge badge-danger">%d</span>',$count_enquiry) : '']),
             'permission' => 'enquiry_view',
         ];
 
