@@ -185,7 +185,7 @@
                 }
             });
         })
-        
+
         $('#delete_remark').on('click', function () {
             $('#remark').val('')
             $('form').submit();
