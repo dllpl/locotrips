@@ -55,6 +55,17 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="panel">
+                            <div class="panel-title"><strong>Замечания</strong></div>
+                            <div class="panel-body">
+                                <div class="form-group">
+                                    <textarea class="form-control" placeholder="Поле для ввода замечаний" maxlength="150" name="remark" id="remark">{{$row->remark}}</textarea>
+                                </div>
+                                <div class="text-right">
+                                    <button class="btn btn-danger" id="delete_remark">Удалить замечания</button>
+                                </div>
+                            </div>
+                        </div>
                         @if(is_default_lang())
                         <div class="panel">
                             <div class="panel-title"><strong>{{__("Author Setting")}}</strong></div>
@@ -173,6 +184,11 @@
                     });
                 }
             });
+        })
+        
+        $('#delete_remark').on('click', function () {
+            $('#remark').val('')
+            $('form').submit();
         })
     </script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js" integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU=" crossorigin="anonymous"></script>

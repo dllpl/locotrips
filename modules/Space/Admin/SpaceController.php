@@ -252,7 +252,7 @@ class SpaceController extends AdminController
             'min_day_before_booking',
             'min_day_stays',
             'surrounding',
-
+            'remark'
         ];
         if($this->hasPermission('space_manage_others')){
             $dataKeys[] = 'create_user';

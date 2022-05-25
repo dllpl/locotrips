@@ -1,3 +1,11 @@
+@if(isset($row->remark))
+<div class="panel bg-danger">
+    <div class="panel-title text-white"><strong>Имеются замечания</strong></div>
+    <div class="panel-body text-white">
+        {{$row->remark}}
+    </div>
+</div>
+@endif
 <div class="panel">
     <div class="panel-title"><strong>{{__("Hotel Content")}}</strong></div>
     <div class="panel-body">

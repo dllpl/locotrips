@@ -81,7 +81,6 @@ class HotelController extends AdminController
                 $query->whereIn('status',['new','pending','publish','draft']);
         }
 
-
         $data = [
             'rows'               => $query->with(['author'])->paginate(20),
             'hotel_manage_others' => $this->hasPermission('hotel_manage_others'),
@@ -248,6 +247,7 @@ class HotelController extends AdminController
             'enable_service_fee',
             'service_fee',
             'surrounding',
+            'remark',
         ];
         if($this->hasPermission('hotel_manage_others')){
             $dataKeys[] = 'create_user';
