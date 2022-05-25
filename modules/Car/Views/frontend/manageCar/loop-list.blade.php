@@ -26,6 +26,13 @@
                     {{$row->title}}
                 </a>
             </div>
+            @if(isset($row->remark))
+                <div>
+                    <span class="badge badge-danger">
+                        Замечание: {{$row->remark}}
+                    </span>
+                </div>
+            @endif
             <div class="location">
                 @if(!empty($row->location->name))
                     <i class="icofont-paper-plane"></i>

@@ -230,6 +230,7 @@ class CarController extends AdminController
             'service_fee',
             'min_day_before_booking',
             'min_day_stays',
+            'remark',
         ];
         if ($this->hasPermission('car_manage_others')) {
             $dataKeys[] = 'create_user';
