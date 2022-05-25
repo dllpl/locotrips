@@ -32,6 +32,7 @@
                         Замечание: {{$row->remark}}
                     </span>
                 </div>
+                <br>
             @endif
             <div class="location">
                 @if(!empty($row->location->name))
