@@ -75,6 +75,7 @@
         <div class="form-group">
             <label class="control-label">{{__("Real address")}}</label>
             <input type="text" name="address" id="customPlaceAddress" class="form-control" placeholder="{{__("Real address")}}" value="{{$translation->address}}">
+            <p id="notice" class="text-danger">Адрес не найден</p>
         </div>
         @if(is_default_lang())
             <div class="form-group">
@@ -85,15 +86,15 @@
                     <div class="g-control">
                         <div class="form-group">
                             <label>{{__("Map Latitude")}}:</label>
-                            <input type="text" name="map_lat" class="form-control" value="{{$row->map_lat}}" onkeydown="return event.key !== 'Enter';">
+                            <input type="text" name="map_lat" class="form-control" value="{{$row->map_lat}}" onkeydown="return event.key !== 'Enter';" disabled>
                         </div>
                         <div class="form-group">
                             <label>{{__("Map Longitude")}}:</label>
-                            <input type="text" name="map_lng" class="form-control" value="{{$row->map_lng}}" onkeydown="return event.key !== 'Enter';">
+                            <input type="text" name="map_lng" class="form-control" value="{{$row->map_lng}}" onkeydown="return event.key !== 'Enter';" disabled>
                         </div>
                         <div class="form-group">
                             <label>{{__("Map Zoom")}}:</label>
-                            <input type="text" name="map_zoom" class="form-control" value="{{$row->map_zoom ?? "8"}}" onkeydown="return event.key !== 'Enter';">
+                            <input type="number" name="map_zoom" class="form-control" value="{{$row->map_zoom ?? "8"}}" onkeydown="return event.key !== 'Enter';">
                         </div>
                     </div>
                 </div>
