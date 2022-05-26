@@ -62,7 +62,7 @@
                 <label class="control-label">{{__("The geographic coordinate")}}</label>
                 <div class="control-map-group">
                     <div id="map_content"></div>
-                    <input type="text" placeholder="{{__("Search by name...")}}" class="bravo_searchbox form-control" autocomplete="off" onkeydown="return event.key !== 'Enter';">
+{{--                    <input type="text" placeholder="{{__("Search by name...")}}" class="bravo_searchbox form-control" autocomplete="off" onkeydown="return event.key !== 'Enter';">--}}
                     <div class="g-control">
                         <div class="form-group">
                             <label>{{__("Map Latitude")}}:</label>
