@@ -83,6 +83,9 @@
                                     <td><input type="checkbox" name="ids[]" class="check-item" value="{{$row->id}}">
                                     </td>
                                     <td class="title">
+                                        @if(isset($row->remark))
+                                            <span style="color: #ffc107"><b>[ ! ]</b></span>
+                                        @endif
                                         @if($row->is_featured)
                                             <span class="badge badge-primary">{{ __("Featured") }}</span>
                                         @endif
