@@ -1,6 +1,7 @@
 @extends('layouts.user')
 @section('head')
-
+    <script src="https://api-maps.yandex.ru/2.1/?apikey=80e45720-3274-4260-befa-7ea70d8416b4&lang=ru_RU" type="text/javascript">
+    </script>
 @endsection
 @section('content')
     <h2 class="title-bar no-border-bottom">
@@ -77,53 +78,46 @@
 @section('footer')
     <script type="text/javascript" src="{{ asset('libs/tinymce/js/tinymce/tinymce.min.js') }}" ></script>
     <script type="text/javascript" src="{{ asset('js/condition.js?_ver='.config('app.asset_version')) }}"></script>
-    <script type="text/javascript" src="{{url('module/core/js/map-engine.js?_ver='.config('app.asset_version'))}}"></script>
-    {!! App\Helpers\MapEngine::scripts() !!}
+
     <script>
-        jQuery(function ($) {
-            new BravoMapEngine('map_content', {
-                fitBounds: true,
-                center: [{{$row->map_lat ?? setting_item('map_lat_default') }}, {{$row->map_lng ?? setting_item('map_lng_default') }}],
-                zoom:{{$row->map_zoom ?? "8"}},
-                ready: function (engineMap) {
-                    @if($row->map_lat && $row->map_lng)
-                    engineMap.addMarker([{{$row->map_lat}}, {{$row->map_lng}}], {
-                        icon_options: {}
+        ymaps.ready(function () {
+            let myMap = new ymaps.Map('map_content', {
+                center: [{{$row->map_lat ?? setting_item('map_lat_default')}}, {{$row->map_lng ?? setting_item('map_lng_default')}}],
+                zoom: 13
+            }, {
+                searchControlProvider: 'yandex#search'
+            })
+
+            let map_lat = {{$row->map_lat ?? setting_item('map_lat_default')}};
+            let map_lng = {{$row->map_lng ?? setting_item('map_lng_default')}};
+
+            MyIconContentLayout = ymaps.templateLayoutFactory.createClass(
+                '<div style="color: #FFFFFF; font-weight: bold;">$[properties.iconContent]</div>'
+            )
+
+            $("input[name=map_lat], input[name=map_lng]").on('change', function () {
+                myMap.geoObjects.removeAll()
+                map_lat = $('input[name=map_lat]').val();
+                map_lng = $('input[name=map_lng]').val();
+                myPlacemark = new ymaps.Placemark([map_lat,map_lng],
+                    {
+                        hintContent: $('input[name=title]').val(),
+                        balloonContent: $('input[name=title]').val() + "<br>" + $('input[name=address]').val()
+                    },
+                    {
+                        iconLayout: 'default#image',
+                        iconImageHref: 'https://locotrips.ru/images/icons/png/pin.png',
+                        iconImageSize: [26, 42],
+                        iconImageOffset: [-17, -50]
                     });
-                    @endif
-                    engineMap.on('click', function (dataLatLng) {
-                        engineMap.clearMarkers();
-                        engineMap.addMarker(dataLatLng, {
-                            icon_options: {}
-                        });
-                        $("input[name=map_lat]").attr("value", dataLatLng[0]);
-                        $("input[name=map_lng]").attr("value", dataLatLng[1]);
-                    });
-                    engineMap.on('zoom_changed', function (zoom) {
-                        $("input[name=map_zoom]").attr("value", zoom);
-                    });
-                    if(bookingCore.map_provider === "gmap"){
-                        engineMap.searchBox($('#customPlaceAddress'),function (dataLatLng) {
-                            engineMap.clearMarkers();
-                            engineMap.addMarker(dataLatLng, {
-                                icon_options: {}
-                            });
-                            $("input[name=map_lat]").attr("value", dataLatLng[0]);
-                            $("input[name=map_lng]").attr("value", dataLatLng[1]);
-                        });
-                    }
-                    engineMap.searchBox($('.bravo_searchbox'),function (dataLatLng) {
-                        engineMap.clearMarkers();
-                        engineMap.addMarker(dataLatLng, {
-                            icon_options: {}
-                        });
-                        $("input[name=map_lat]").attr("value", dataLatLng[0]);
-                        $("input[name=map_lng]").attr("value", dataLatLng[1]);
-                    });
-                }
-            });
-        })
+                myMap.geoObjects.add(myPlacemark);
+                myMap.setCenter([map_lat,map_lng],myMap.getZoom())
+            })
+        });
+
+
     </script>
+
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js" integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU=" crossorigin="anonymous"></script>
     <script>
         $('.attach-demo').sortable({
