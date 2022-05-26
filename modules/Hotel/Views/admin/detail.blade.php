@@ -129,41 +129,142 @@
 @section ('script.body')
 
     <script>
-        ymaps.ready(function () {
-            let myMap = new ymaps.Map('map_content', {
-                center: [{{$row->map_lat ?? setting_item('map_lat_default')}}, {{$row->map_lng ?? setting_item('map_lng_default')}}],
-                zoom: 13
-            }, {
-                searchControlProvider: 'yandex#search'
-            })
+        ymaps.ready(init);
 
-            let map_lat = {{$row->map_lat ?? setting_item('map_lat_default')}};
-            let map_lng = {{$row->map_lng ?? setting_item('map_lng_default')}};
+        function init() {
+            var suggestView = new ymaps.SuggestView('customPlaceAddress'),
+                map,
+                placemark;
 
-            MyIconContentLayout = ymaps.templateLayoutFactory.createClass(
-                '<div style="color: #FFFFFF; font-weight: bold;">$[properties.iconContent]</div>'
-            )
+            if ($('#customPlaceAddress').val() !== '') {
+                geocode();
+            }
 
-            $("input[name=map_lat], input[name=map_lng]").on('change', function () {
-                myMap.geoObjects.removeAll()
-                map_lat = $('input[name=map_lat]').val();
-                map_lng = $('input[name=map_lng]').val();
-                myPlacemark = new ymaps.Placemark([map_lat,map_lng],
-                    {
-                        hintContent: $('input[name=title]').val(),
-                        balloonContent: $('input[name=title]').val() + "<br>" + $('input[name=address]').val()
-                    },
-                    {
-                        iconLayout: 'default#image',
-                        iconImageHref: 'https://locotrips.ru/images/icons/png/pin.png',
-                        iconImageSize: [26, 42],
-                        iconImageOffset: [-17, -50]
-                    });
-                myMap.geoObjects.add(myPlacemark);
-                myMap.setCenter([map_lat,map_lng],myMap.getZoom())
-            })
-        });
+            $('#customPlaceAddress').on('change', function (e) {
+                geocode();
+            });
 
+            $("#customPlaceAddress").on("keypress", function (event) {
+                if (event.keyCode === 13) {
+                    event.preventDefault();
+                    geocode();
+                }
+            });
+
+            function geocode() {
+                var request = $('#customPlaceAddress').val();
+                ymaps.geocode(request).then(function (res) {
+                    var obj = res.geoObjects.get(0),
+                        error, hint;
+
+                    if (obj) {
+                        switch (obj.properties.get('metaDataProperty.GeocoderMetaData.precision')) {
+                            case 'exact':
+                                break;
+                            case 'number':
+                            case 'near':
+                            case 'range':
+                                error = 'Неточный адрес, требуется уточнение';
+                                hint = 'Уточните номер дома';
+                                break;
+                            case 'street':
+                                error = 'Неполный адрес, требуется уточнение';
+                                hint = 'Уточните номер дома';
+                                break;
+                            case 'other':
+                            default:
+                                error = 'Неточный адрес, требуется уточнение';
+                                hint = 'Уточните адрес';
+                        }
+                    } else {
+                        error = 'Адрес не найден';
+                        hint = 'Уточните адрес';
+                    }
+                    if (error) {
+                        showError(error);
+                        showMessage(hint);
+                    } else {
+                        showResult(obj);
+                    }
+                }, function (e) {
+                    console.log(e)
+                })
+
+            }
+            function showResult(obj) {
+                $('#customPlaceAddress').removeClass('input_error');
+                $('#notice').css('display', 'none');
+
+                var mapContainer = $('#map_content'),
+                    bounds = obj.properties.get('boundedBy'),
+                    mapState = ymaps.util.bounds.getCenterAndZoom(
+                        bounds,
+                        [500, 500]
+                    ),
+                    address = [obj.getCountry(), obj.getAddressLine()].join(', '),
+                    shortAddress = [obj.getThoroughfare(), obj.getPremiseNumber(), obj.getPremise()].join(' ');
+
+                mapState.zoom = {{$row->map_zoom ?? 8}}
+                $('input[name=map_lat]').attr('value', mapState.center[0])
+                $('input[name=map_lng]').attr('value', mapState.center[1])
+
+                $('input[name=map_zoom]').on('change', function () {
+                    mapState.zoom = $('input[name=map_zoom]').val()
+                    $('input[name=map_zoom]').attr('value', mapState.zoom)
+                    createMap(mapState, shortAddress);
+                })
+                mapState.controls = [];
+                createMap(mapState, shortAddress);
+                showMessage(address);
+            }
+
+            function showError(message) {
+                $('#notice').text(message);
+                $('#suggest').addClass('input_error');
+                $('#notice').css('display', 'block');
+                // Удаляем карту.
+                if (map) {
+                    map.destroy();
+                    map = null;
+                }
+            }
+
+
+            function createMap(state, caption) {
+                if (!map) {
+                    map = new ymaps.Map('map_content', state);
+                    placemark = new ymaps.Placemark(
+                        map.getCenter(),
+                        {
+                            hintContent: $('input[name=title]').val(),
+                            balloonContent: $('input[name=title]').val() + "<br>" + $('input[name=address]').val()
+                        },
+                        {
+                            iconLayout: 'default#image',
+                            iconImageHref: 'https://locotrips.ru/images/icons/png/pin.png',
+                            iconImageSize: [26, 42],
+                            iconImageOffset: [-17, -50]
+                        });
+                    MyIconContentLayout = ymaps.templateLayoutFactory.createClass(
+                        '<div style="color: #FFFFFF; font-weight: bold;">$[properties.iconContent]</div>'
+                    )
+
+                    map.geoObjects.add(placemark);
+
+                } else {
+                    map.setCenter(state.center, state.zoom);
+                    placemark.geometry.setCoordinates(state.center);
+                    placemark.properties.set({iconCaption: caption, balloonContent: caption});
+                }
+
+
+            }
+
+            function showMessage(message) {
+                $('#messageHeader').text('Данные получены:');
+                $('#message').text(message);
+            }
+        }
 
     </script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js" integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU=" crossorigin="anonymous"></script>
