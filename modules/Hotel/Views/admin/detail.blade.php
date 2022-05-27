@@ -140,15 +140,9 @@
                 geocode();
             }
 
-            $('#customPlaceAddress').on('change', function (e) {
+            $('#button_check').bind('click', function (e) {
+                event.preventDefault();
                 geocode();
-            });
-
-            $("#customPlaceAddress").on("keypress", function (event) {
-                if (event.keyCode === 13) {
-                    event.preventDefault();
-                    geocode();
-                }
             });
 
             function geocode() {
@@ -199,7 +193,7 @@
                     bounds = obj.properties.get('boundedBy'),
                     mapState = ymaps.util.bounds.getCenterAndZoom(
                         bounds,
-                        [500, 500]
+                        [mapContainer.width(), mapContainer.height()]
                     ),
                     address = [obj.getCountry(), obj.getAddressLine()].join(', '),
                     shortAddress = [obj.getThoroughfare(), obj.getPremiseNumber(), obj.getPremise()].join(' ');
