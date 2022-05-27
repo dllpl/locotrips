@@ -74,7 +74,8 @@
         @endif
         <div class="form-group">
             <label class="control-label">{{__("Real address")}}</label>
-            <input type="text" name="address" id="customPlaceAddress" class="form-control" placeholder="{{__("Real address")}}" value="{{$translation->address}}">
+            <input type="text" name="address" id="customPlaceAddress" class="form-control mb-1" placeholder="{{__("Real address")}}" value="{{$translation->address}}">
+            <button id="button_check" class="btn btn-danger">Проверить</button>
             <p id="notice" class="text-danger">Адрес не найден</p>
         </div>
         @if(is_default_lang())
