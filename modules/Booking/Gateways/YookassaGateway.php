@@ -102,9 +102,28 @@ class YookassaGateway extends BaseGateway
                     'return_url' => 'https://locotrips.ru/user/booking-history',
                 ),
                 'capture' => true,
-                'description' => 'Заказ №'.$booking->id,
+                'description' => 'Бронирование №'.$booking->id,
                 'metadata' => array(
                     'order_id' => $booking->id,
+                ),
+                'receipt' => array(
+                    'customer' => array(
+                        'email' => $booking->email,
+                        'full_name' => $booking->first_name.' '.$booking->last_name
+                    ),
+                    'items' => array(
+					    array(
+					        'description' => 'Бронирование №'.$booking->id,
+					        'quantity'    => 1,
+					        "amount" => array(
+                                "value" => (float)$booking->pay_now,
+                                "currency" => "RUB"
+                            ),
+					        'vat_code' => '1',
+					        'payment_mode' => 'partial_prepayment',
+					        'payment_subject' => 'service',
+                        )
+                    )
                 )
             );
             $ch = curl_init('https://api.yookassa.ru/v3/payments');

@@ -137,8 +137,8 @@
     <div class="g-overview">
         <h3>Правила</h3>
         <div class="description">
-            <div>Въезд в {{$row->check_in}}</div>
-            <div>Выезд в {{$row->check_out}}</div>
+            <div>Заезд после {{$row->check_in}}</div>
+            <div>Выезд до {{$row->check_out}}</div>
         </div>
     </div>
 @endif
