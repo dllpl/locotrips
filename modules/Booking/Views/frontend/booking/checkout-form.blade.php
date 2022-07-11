@@ -73,7 +73,7 @@
             </div>
         </div>
     </div>
-    
+
     @include ('Booking::frontend/booking/checkout-deposit')
     @include ($service->checkout_form_payment_file ?? 'Booking::frontend/booking/checkout-payment')
 
@@ -96,7 +96,7 @@
     <p class="alert-text mt10" v-show=" message.content" v-html="message.content" :class="{'danger':!message.type,'success':message.type}"></p>
 
     <div class="form-actions">
-        <button class="btn btn-danger" @click="doCheckout">{{__('Submit')}}
+        <button class="btn btn-danger" @click="doCheckout" onclick="ym(87724233,'reachGoal','buyfinish'); return true;">{{__('Submit')}}
             <i class="fa fa-spin fa-spinner" v-show="onSubmit"></i>
         </button>
     </div>

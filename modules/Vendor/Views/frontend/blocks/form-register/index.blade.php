@@ -50,7 +50,7 @@
                         </div><!--End form-group-->
                     @endif
                     <div class="form-group">
-                        <button type="submit" class="btn btn-primary form-submit" onclick="ym(87724233,'reachGoal','register-vendor'); return true;">
+                        <button type="submit" class="btn btn-primary form-submit" onclick="ym(87724233,'reachGoal','regvendor'); return true;">
                             {{ __('Sign Up') }}
                             <span class="spinner-grow spinner-grow-sm icon-loading" role="status" aria-hidden="true" style="display: none"></span>
                         </button>

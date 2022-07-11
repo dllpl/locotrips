@@ -265,7 +265,7 @@
                             <span>{{__("Pay now")}}</span>
                             @{{pay_now_price_html}}
                         </div>
-                        <button type="button" class="btn btn-primary" @click="doSubmit($event)" :class="{'disabled':onSubmit}" name="submit">
+                        <button type="button" class="btn btn-primary" @click="doSubmit($event)" :class="{'disabled':onSubmit}" name="submit" onclick="ym(87724233,'reachGoal','buystep1'); return true;">
                             <span >{{__("Book Now")}}</span>
                             <i v-show="onSubmit" class="fa fa-spinner fa-spin"></i>
                         </button>

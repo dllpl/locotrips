@@ -47,7 +47,7 @@
     @endif
     <div class="error message-error invalid-feedback"></div>
     <div class="form-group">
-        <button type="submit" class="btn btn-primary form-submit">
+        <button type="submit" class="btn btn-primary form-submit" onclick="ym(87724233,'reachGoal','reguser'); return true;">
             {{ __('Sign Up') }}
             <span class="spinner-grow spinner-grow-sm icon-loading" role="status" aria-hidden="true"></span>
         </button>
