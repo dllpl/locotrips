@@ -34,7 +34,9 @@
 @endsection
 
 @section('footer')
-    {!! App\Helpers\MapEngine::scripts() !!}
+{{--    {!! App\Helpers\MapEngine::scripts() !!}--}}
+<script src="https://api-maps.yandex.ru/2.1/?apikey=80e45720-3274-4260-befa-7ea70d8416b4&lang=ru_RU" type="text/javascript"></script>
+
     <script>
         var bravo_map_data = {
             markers:{!! json_encode($markers) !!},
@@ -42,7 +44,6 @@
             map_lng_default:{{setting_item('hotel_map_lng_default','0')}},
             map_zoom_default:{{setting_item('hotel_map_zoom_default','0')}},
         };
-        console.log(bravo_map_data)
     </script>
     <script type="text/javascript" src="{{ asset("libs/ion_rangeslider/js/ion.rangeSlider.min.js") }}"></script>
     <script type="text/javascript" src="{{ asset('module/hotel/js/hotel-map.js?_ver='.config('app.asset_version')) }}"></script>

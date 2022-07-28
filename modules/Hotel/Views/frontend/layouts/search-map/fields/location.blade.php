@@ -4,17 +4,6 @@
     <div class="form-group">
         <i class="field-icon fa icofont-map"></i>
         <div class="form-content">
-            @if($location_search_style=='autocompletePlace')
-                <div class="g-map-place">
-                    <input type="text" style="height: 25px" name="map_place"
-                           placeholder="{{__("Where are you going?")}}" value="{{request()->input('map_place')}}"
-                           class="form-control border-0">
-                    <div class="map d-none" id="map-{{\Illuminate\Support\Str::random(10)}}"></div>
-                    <input type="hidden" name="map_lat" value="{{request()->input('map_lat')}}">
-                    <input type="hidden" name="map_lgn" value="{{request()->input('map_lgn')}}">
-                </div>
-
-            @else
                 <?php
                 $location_name = "";
                 $list_json = [];
@@ -40,7 +29,6 @@
                            data-default="{{ json_encode($list_json) }}">
                     <input type="hidden" class="child_id" name="location_id" value="{{Request::query('location_id')}}">
                 </div>
-            @endif
         </div>
     </div>
 </div>
