@@ -19,23 +19,46 @@ jQuery(function ($) {
 		});
 	});
 
-	var mapEngine = new BravoMapEngine('bravo_results_map',{
-		fitBounds:bookingCore.map_options.map_fit_bounds,
-		center:[bravo_map_data.map_lat_default, bravo_map_data.map_lng_default ],
-		zoom:bravo_map_data.map_zoom_default,
-		disableScripts:true,
-		markerClustering:bookingCore.map_options.map_clustering,
-		ready: function (engineMap) {
-			if(bravo_map_data.markers){
-				engineMap.addMarkers2(bravo_map_data.markers);
-			}
-		}
-	});
+    var markers = bravo_map_data.markers
+    var placemarkCollections = {};
+    var myMap;
+    var placemarkList = {};
+
+    ymaps.ready(init);
+
+    function init() {
+        myMap = new ymaps.Map("bravo_results_map", {
+            center: [bravo_map_data.map_lat_default, bravo_map_data.map_lng_default],
+            zoom: bravo_map_data.map_zoom_default,
+            controls: ["zoomControl"],
+            zoomMargin: [20],
+        });
+        addMarkers(markers);
+    }
+
+    function addMarkers(markers) {
+        for (var i = 0; i < markers.length; i++) {
+            var cityCollection = new ymaps.GeoObjectCollection();
+            var shopPlacemark = new ymaps.Placemark([markers[i].lat,markers[i].lng], {
+                balloonContentBody: markers[i].infobox
+            }, {
+                iconLayout: "default#image",
+                iconImageHref: markers[i].marker
+            });
+            if (!placemarkList[i]) placemarkList[i] = {};
+            placemarkList[i] = shopPlacemark;
+            // Добавляем метку в коллекцию
+            cityCollection.add(shopPlacemark);
+            placemarkCollections[i] = cityCollection;
+            // Добавляем коллекцию на карту
+            myMap.geoObjects.add(cityCollection);
+        }
+    }
 
 	$('.bravo_form_search_map .smart-search .child_id').change(function () {
 		reloadForm();
 	});
-    $('.bravo_form_search_map .g-map-place input[name=map_place]').change(function () {
+    $('.bravo_form_search_map .g-map-place input[name=datata_address_hidden]').change(function () {
         setTimeout(function () {
             reloadForm()
         },500)
@@ -61,8 +84,8 @@ jQuery(function ($) {
 				$('.map_loading').hide();
 				if(json.status)
 				{
-					mapEngine.clearMarkers();
-					mapEngine.addMarkers2(json.markers);
+                    myMap.geoObjects.removeAll()
+					addMarkers(json.markers);
 
 					$('.bravo-list-item').replaceWith(json.html);
 
@@ -96,8 +119,8 @@ jQuery(function ($) {
                 $('.map_loading').hide();
                 if(json.status)
                 {
-                    mapEngine.clearMarkers();
-                    mapEngine.addMarkers2(json.markers);
+                    myMap.geoObjects.removeAll()
+                    addMarkers(json.markers);
 
                     $('.bravo-list-item').replaceWith(json.html);
 

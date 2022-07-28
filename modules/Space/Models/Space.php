@@ -907,6 +907,20 @@ class Space extends Bookable
         return "book";
     }
 
+    public static function searchByCity(Request $request)
+    {
+        $model_space = parent::query()->select("bravo_spaces.*");
+        $model_space->where("bravo_spaces.status", "publish");
+        $model_space->where('address', 'LIKE', "%$request->city%");
+        if(!empty($request->query('limit'))){
+            $limit = $request->query('limit');
+        }else{
+            $limit = !empty(setting_item("space_page_limit_item"))? setting_item("space_page_limit_item") : 9;
+        }
+        return $model_space->with(['location','hasWishList','translations'])->paginate($limit);
+
+    }
+
     public static function search(Request $request)
     {
         $model_space = parent::query()->select("bravo_spaces.*");

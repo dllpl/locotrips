@@ -34,7 +34,8 @@
 @endsection
 
 @section('footer')
-    {!! App\Helpers\MapEngine::scripts() !!}
+{{--    {!! App\Helpers\MapEngine::scripts() !!}--}}
+    <script src="https://api-maps.yandex.ru/2.1/?apikey=80e45720-3274-4260-befa-7ea70d8416b4&lang=ru_RU" type="text/javascript"></script>
     <script>
         var bravo_map_data = {
             markers:{!! json_encode($markers) !!},

@@ -4,6 +4,7 @@ use \Illuminate\Support\Facades\Route;
 Route::group(['prefix'=>config('space.space_route_prefix')],function(){
     Route::get('/','SpaceController@index')->name('space.search'); // Search
     Route::get('/{slug}','SpaceController@detail')->name('space.detail');// Detail
+    Route::post('/city/', 'SpaceController@getMarkersByCity')->name('space.markers_by_city');
 });
 
 
