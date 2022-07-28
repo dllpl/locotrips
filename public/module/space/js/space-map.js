@@ -20,20 +20,31 @@ jQuery(function ($) {
 	});
 
     var markers = bravo_map_data.markers
-    var placemarkCollections = {};
     var myMap;
-    var placemarkList = {};
 
     ymaps.ready(init);
 
     function init() {
         myMap = new ymaps.Map("bravo_results_map", {
             center: [bravo_map_data.map_lat_default, bravo_map_data.map_lng_default],
-            zoom: bravo_map_data.map_zoom_default,
+            zoom: 5,
             controls: ["zoomControl"],
             zoomMargin: [20],
         });
-        addMarkers(markers);
+        for (var i = 0; i < markers.length; i++) {
+            var cityCollection = new ymaps.GeoObjectCollection();
+            var shopPlacemark = new ymaps.Placemark([markers[i].lat,markers[i].lng], {
+                balloonContentBody: markers[i].infobox
+            }, {
+                iconLayout: "default#image",
+                iconImageHref: markers[i].marker
+            });
+            cityCollection.add(shopPlacemark);
+            myMap.geoObjects.add(cityCollection);
+        }
+        myMap.setBounds(cityCollection.getBounds(), {
+            checkZoomRange: true,
+        }).then(function () {myMap.setZoom(2)});
     }
 
     function addMarkers(markers) {
@@ -45,14 +56,12 @@ jQuery(function ($) {
                 iconLayout: "default#image",
                 iconImageHref: markers[i].marker
             });
-            if (!placemarkList[i]) placemarkList[i] = {};
-            placemarkList[i] = shopPlacemark;
-            // Добавляем метку в коллекцию
             cityCollection.add(shopPlacemark);
-            placemarkCollections[i] = cityCollection;
-            // Добавляем коллекцию на карту
             myMap.geoObjects.add(cityCollection);
         }
+        myMap.setBounds(cityCollection.getBounds(), {
+                checkZoomRange: true,
+            }).then(function () {myMap.setZoom(10)});
     }
 
 	$('.bravo_form_search_map .smart-search .child_id').change(function () {
